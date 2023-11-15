@@ -17,17 +17,12 @@ public class WebSecurityConfig {
 
         http.csrf(csrf-> csrf.disable())
                 .authorizeHttpRequests((requests)->{
-                        requests.requestMatchers("/", "/home")
+                        requests.requestMatchers("/", "/home", "/api/**")
                                 .permitAll()
                                 .anyRequest().authenticated();
                         }
-                )
-                .formLogin((login) ->{
-                    login.loginPage("/login").permitAll();
-                })
-                .logout((logout)->{
-                    logout.permitAll();
-                });
+                );
+        //폼인증 안함 => 토큰인증으로 시작
 
         return http.build();
     }

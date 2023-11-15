@@ -1,12 +1,16 @@
 package com.ll.jpa1.dto;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
 @Table(name="TB_USER")
+@SequenceGenerator(
+        name="SEQ_USER_GENERATOR",
+        sequenceName = "SEQ_TB_USER",
+        initialValue = 1,
+        allocationSize = 1
+)
 @Builder
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -14,6 +18,7 @@ import lombok.*;
 public class UserDto {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_USER_GENERATOR")
     private long userId;
 
     private String username;
