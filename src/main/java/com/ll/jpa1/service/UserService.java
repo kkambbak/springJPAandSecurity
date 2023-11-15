@@ -19,4 +19,7 @@ public class UserService {
     }
 
 
+    public UserDto getUserInfo(UserDto userDto) {
+        return userRepository.findByUsernameAndPassword(userDto.getUsername(), userDto.getPassword());
+    }
 }
