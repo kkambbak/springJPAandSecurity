@@ -28,15 +28,6 @@ public class WebSecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
-//        http.csrf(csrf-> csrf.disable())
-//                .authorizeHttpRequests((requests)->{
-//                        requests.requestMatchers("/", "/home", "/api/signup", "/api/login")
-//                                .permitAll()
-//                                .anyRequest().authenticated();
-//                        }
-//                );
-        //폼인증 안함 => 토큰인증으로 시작
-
         http
                 // token을 사용하는 방식이기 때문에 csrf를 disable합니다.
                 .csrf(csrf -> csrf.disable())
@@ -49,8 +40,9 @@ public class WebSecurityConfig {
 
                 .authorizeHttpRequests(authorizeHttpRequests -> authorizeHttpRequests
                         .requestMatchers("/api/hello",
-                                "/api/authenticate",
-                                "/api/signup").permitAll()
+                                "/api/signup",
+                                "/api/login"
+                        ).permitAll()
                         .anyRequest().authenticated()
                 )
 
