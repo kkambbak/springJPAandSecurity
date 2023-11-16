@@ -19,7 +19,7 @@ public class UserDto {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_USER_GENERATOR")
-    private long userId;
+    private Long userId;
 
     private String username;
     private String password;

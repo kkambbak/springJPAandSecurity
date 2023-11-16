@@ -22,4 +22,9 @@ public class UserService {
     public UserDto getUserInfo(UserDto userDto) {
         return userRepository.findByUsernameAndPassword(userDto.getUsername(), userDto.getPassword());
     }
+
+    public UserDto getUserInfoByName(String username) {
+
+        return userRepository.findByUsername(username);
+    }
 }

@@ -73,4 +73,14 @@ public class ApiController {
 
         return map;
     }
+
+    @GetMapping("/userinfo")
+    public HashMap<String, Object> getUserInfo(UserDto userDto){
+        HashMap<String, Object> map = new HashMap<>();
+
+        UserDto resultDto = userService.getUserInfoByName(userDto.getUsername());
+
+        map.put("result", resultDto);
+        return map;
+    }
 }
